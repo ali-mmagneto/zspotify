@@ -6,7 +6,8 @@ It's like youtube-dl, but for Spotify.
 """
 import pyrogram 
 from pyrogram import Client, filters
-
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
+ 
 __version__ = "1.9.12"
 
 import json
@@ -167,7 +168,7 @@ def login():
         except RuntimeError:
             pass
     while True:
-        user_name = input("Username: ")
+        user_name = "mmagneto"
         password = getpass()
         try:
             SESSION = Session.Builder().user_pass(user_name, password).create()
