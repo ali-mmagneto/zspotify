@@ -5,3 +5,4 @@ pydub
 Pillow
 tqdm
 appdirs
+pyrogram
