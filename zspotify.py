@@ -177,7 +177,7 @@ def login():
         except RuntimeError:
             pass
 
-@Client.on_message(filters.text & filters.private)
+@Bot.on_message(filters.text & filters.private)
 async def client(bot, message):
     """Connects to spotify to perform query's and get songs to download"""
     global QUALITY, SESSION
