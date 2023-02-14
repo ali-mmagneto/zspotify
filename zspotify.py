@@ -56,19 +56,17 @@ sanitize = ["\\", "/", ":", "*", "?", "'", "<", ">", '"']
 
 
 CONFIG_DIR = user_config_dir("files")
-ROOT_PATH = os.path.expanduser("~/Music/ZSpotify Music/")
-ROOT_PODCAST_PATH = os.path.expanduser("~/Music/ZSpotify Podcasts/")
+ROOT_PATH = os.path.expanduser("~/musicfiles/")
+ROOT_PODCAST_PATH = os.path.expanduser("~/musicfiles/")
 ALBUM_IN_FILENAME = (
     True  # Puts album name in filename, otherwise name is (artist) - (track name).
 )
 
 SKIP_EXISTING_FILES = True
 SKIP_PREVIOUSLY_DOWNLOADED = True
-MUSIC_FORMAT = os.getenv("MUSIC_FORMAT") or "mp3"  # "mp3" | "ogg"
+MUSIC_FORMAT = "mp3"  # "mp3" | "ogg"
 FORCE_PREMIUM = False  # set to True if not detecting your premium account automatically
-RAW_AUDIO_AS_IS = (
-    False or os.getenv("RAW_AUDIO_AS_IS") == "y"
-)  # set to True if you wish you save the raw audio without re-encoding it.
+RAW_AUDIO_AS_IS = False  # set to True if you wish you save the raw audio without re-encoding it.
 # This is how many seconds ZSpotify waits between downloading tracks so spotify doesn't get out the ban hammer
 ANTI_BAN_WAIT_TIME = 5
 ANTI_BAN_WAIT_TIME_ALBUMS = 30
@@ -76,16 +74,16 @@ ANTI_BAN_WAIT_TIME_ALBUMS = 30
 OVERRIDE_AUTO_WAIT = False
 CHUNK_SIZE = 50000
 
-CREDENTIALS = os.path.join(CONFIG_DIR, "credentials.json")
+CREDENTIALS = "files/credentials.json")
 
-LIMIT = os.getenv("LIMIT_ELEMENTS") or 50
+LIMIT = 50
 
 requests.adapters.DEFAULT_RETRIES = 10
 REINTENT_DOWNLOAD = 30
 
 # miscellaneous functions for general use
-PUID = int(os.getenv("PUID")) or 0
-PGID = int(os.getenv("PGID")) or 0
+PUID = 0
+PGID = 0
 
 def clear():
     """Clear the console window"""
@@ -241,7 +239,7 @@ async def client(bot, message):
                 print("")
                 exit()
     else:
-        search_text = input("Enter search or URL: ")
+        search_text = message.text
 
         (
             track_id_str,
@@ -272,8 +270,8 @@ async def client(bot, message):
         else:
             try:
                 search(search_text)
-            except:
-                client()
+            except Exception as e:
+                await message.reply_text(f"`{e}`")
             client()
 
     # wait()
