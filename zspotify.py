@@ -82,7 +82,7 @@ ANTI_BAN_WAIT_TIME_ALBUMS = 30
 OVERRIDE_AUTO_WAIT = False
 CHUNK_SIZE = 50000
 
-CREDENTIALS = "files/credentials.json")
+CREDENTIALS = "files/credentials.json"
 
 LIMIT = 50
 
