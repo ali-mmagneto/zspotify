@@ -29,6 +29,14 @@ from pydub import AudioSegment
 from tqdm import tqdm
 from appdirs import user_config_dir
 
+from os import environ
+
+BOT_TOKEN = environ.get("BOT_TOKEN", "")
+API_ID = int(environ.get("API_ID", 1234))
+API_HASH = environ.get("API_HASH", "")
+
+Bot = Client("DepremBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
 # Change to True to use mutagen directly rather than through music_tag layer.
 USE_MUTAGEN = True
 
@@ -1322,3 +1330,6 @@ if __name__ == "__main__":
         sys.exit(0)
     except Exception as error:
         print(f"[!] ERROR {error} ")
+
+
+Bot.run()
