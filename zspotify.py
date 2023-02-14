@@ -281,7 +281,7 @@ async def client(bot, message):
                 search(search_text)
             except Exception as e:
                 await message.reply_text(f"`{e}`")
-            client()
+            client(bot, message)
 
     # wait()
 
@@ -570,7 +570,7 @@ def search(search_term):
         selection = str(input("SELECT ITEM(S) BY ID: "))
         inputs = split_input(selection)
         
-        if not selection: client()
+        if not selection: client(bot, message)
         
         for pos in inputs:
             position = int(pos)
@@ -1303,7 +1303,7 @@ def main():
     """Main function"""
     check_raw()
     login()
-    client()
+    client(bot, message)
 
 
 if __name__ == "__main__":
