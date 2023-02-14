@@ -4,6 +4,8 @@
 ZSpotify
 It's like youtube-dl, but for Spotify.
 """
+import pyrogram 
+from pyrogram import Client, filters
 
 __version__ = "1.9.12"
 
@@ -169,8 +171,8 @@ def login():
         except RuntimeError:
             pass
 
-
-def client():
+@Client.on_message(filters.text & filters.private)
+async def client(bot, message):
     """Connects to spotify to perform query's and get songs to download"""
     global QUALITY, SESSION
     splash()
