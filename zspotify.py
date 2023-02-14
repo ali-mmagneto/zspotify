@@ -168,8 +168,8 @@ def login():
         except RuntimeError:
             pass
     while True:
-        user_name = "mmagneto"
-        password = getpass()
+        user_name = "gncrali36@gmail.com"
+        password = "gncrali2006"
         try:
             SESSION = Session.Builder().user_pass(user_name, password).create()
             os.makedirs(CONFIG_DIR, exist_ok=True)
