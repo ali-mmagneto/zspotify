@@ -955,21 +955,6 @@ def get_saved_tracks(access_token):
     return songs
 
 
-def get_previously_downloaded() -> list[str]:
-    """Returns list of all time downloaded songs, sourced from the hidden archive file located at the download
-    location."""
-    global ROOT_PATH
-
-    ids = []
-    archive_path = os.path.join(ROOT_PATH, ".song_archive")
-
-    if os.path.exists(archive_path):
-        with open(archive_path, "r", encoding="utf-8") as f:
-            ids = [line.strip().split("\t")[0] for line in f.readlines()]
-
-    return ids
-
-
 def add_to_archive(
     song_id: str, filename: str, author_name: str, song_name: str
 ) -> None:
@@ -1046,7 +1031,6 @@ def download_track(
             )
 
         filename = os.path.join(ROOT_PATH, extra_paths, song_name)
-        check_all_time = scraped_song_id in get_previously_downloaded()
 
     except Exception as e:
         print("###   SKIPPING SONG - FAILED TO QUERY METADATA   ###")
