@@ -55,7 +55,7 @@ SESSION: Session = None
 sanitize = ["\\", "/", ":", "*", "?", "'", "<", ">", '"']
 
 
-CONFIG_DIR = user_config_dir("ZSpotify")
+CONFIG_DIR = user_config_dir("files")
 ROOT_PATH = os.path.expanduser("~/Music/ZSpotify Music/")
 ROOT_PODCAST_PATH = os.path.expanduser("~/Music/ZSpotify Podcasts/")
 ALBUM_IN_FILENAME = (
